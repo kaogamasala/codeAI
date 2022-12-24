@@ -33,6 +33,9 @@ function typeText(element, text) {
   }, 20)
 }
 
+// generate unique ID for each message div of bot
+// necessary for typing text effect for that specific reply
+// without unique ID, typing text will work on every element
 function generateUniqueId() {
   const timestamp = Date.now();
   const randomNumber = Math.random();
@@ -55,7 +58,7 @@ function chatStripe(isAi, value, uniqueId) {
               <div class="message" id=${uniqueId}>${value}</div>
           </div>
       </div>
-  `
+      `
   )
 }
 
@@ -109,8 +112,6 @@ const handleSubmit = async (e) => {
     alert(err);
   }
 }
-
-
 
 form.addEventListener('submit', handleSubmit)
 form.addEventListener('keyup', (e) => {
